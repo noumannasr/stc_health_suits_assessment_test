@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           canvasColor: Colors.transparent,
         ),
         initialRoute: RoutesName.splash,
-        onGenerateRoute: Routes.generateRoutes,
+        onGenerateRoute: Routes.generateRoutes,// git commit -m "8/15/23 Nouman commit"
         home: const LoginView(),
       ),
     );

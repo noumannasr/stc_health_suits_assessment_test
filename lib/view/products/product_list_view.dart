@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stc_health_suits_assessment_test_nouman/data/response/status.dart';
-import 'package:stc_health_suits_assessment_test_nouman/res/app_text.dart';
+import 'package:stc_health_suits_assessment_test_nouman/res/components/app_text.dart';
 import 'package:stc_health_suits_assessment_test_nouman/res/colors.dart';
 import 'package:stc_health_suits_assessment_test_nouman/utils/routes/routes_name.dart';
-import 'package:stc_health_suits_assessment_test_nouman/view/detail/product_detail_screen.dart';
 import 'package:stc_health_suits_assessment_test_nouman/view/products/widget/product_item.dart';
 import 'package:stc_health_suits_assessment_test_nouman/view_model/product_view_model.dart';
 import 'package:stc_health_suits_assessment_test_nouman/view_model/user_view_model.dart';
 
-class ProductScreen extends StatefulWidget {
-  const ProductScreen({super.key});
+class ProductListView extends StatefulWidget {
+  const ProductListView({super.key});
 
   @override
-  State<ProductScreen> createState() => _ProductScreenState();
+  State<ProductListView> createState() => _ProductListViewState();
 }
 
-class _ProductScreenState extends State<ProductScreen> {
+class _ProductListViewState extends State<ProductListView> {
   final ProductViewModel productViewModel = ProductViewModel();
   @override
   void initState() {
@@ -67,9 +66,9 @@ class _ProductScreenState extends State<ProductScreen> {
             case Status.LOADING:
               return Center(
                   child: CircularProgressIndicator(
-                color: AppColors.lightBlueColor,
-                strokeWidth: 2,
-              ));
+                    color: AppColors.lightBlueColor,
+                    strokeWidth: 2,
+                  ));
             case Status.ERROR:
               return Center(child: Text(value.productList.message.toString()));
             case Status.COMPLETED:
@@ -79,7 +78,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   itemCount: productViewModel.productList.data!.length,
                   itemBuilder: (BuildContext context, index) {
                     final productItem =
-                        productViewModel.productList.data![index];
+                    productViewModel.productList.data![index];
                     return ProductItem(
                       product: productItem,
                     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:stc_health_suits_assessment_test_nouman/res/app_text.dart';
+import 'package:stc_health_suits_assessment_test_nouman/res/components/app_text.dart';
 import 'package:stc_health_suits_assessment_test_nouman/res/colors.dart';
-import 'package:stc_health_suits_assessment_test_nouman/res/round_button.dart';
+import 'package:stc_health_suits_assessment_test_nouman/res/components/round_button.dart';
 import 'package:stc_health_suits_assessment_test_nouman/utils/utils.dart';
 import 'package:stc_health_suits_assessment_test_nouman/view_model/auth_view_model.dart';
 

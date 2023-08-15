@@ -2,23 +2,23 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
 import 'package:stc_health_suits_assessment_test_nouman/data/response/status.dart';
-import 'package:stc_health_suits_assessment_test_nouman/res/app_text.dart';
+import 'package:stc_health_suits_assessment_test_nouman/res/components/app_text.dart';
 import 'package:stc_health_suits_assessment_test_nouman/res/colors.dart';
-import 'package:stc_health_suits_assessment_test_nouman/res/round_button.dart';
+import 'package:stc_health_suits_assessment_test_nouman/res/components/rating.dart';
+import 'package:stc_health_suits_assessment_test_nouman/res/components/round_button.dart';
 import 'package:stc_health_suits_assessment_test_nouman/view_model/product_detail_view_model.dart';
 
-class ProductDetailScreen extends StatefulWidget {
+class ProductDetailView extends StatefulWidget {
   final int productId;
-  const ProductDetailScreen({super.key, required this.productId});
+  const ProductDetailView({super.key, required this.productId});
   @override
-  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+  State<ProductDetailView> createState() => _ProductDetailViewState();
 }
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
+class _ProductDetailViewState extends State<ProductDetailView> {
   final ProductDetailViewModel productDetailViewModel =
-      ProductDetailViewModel();
+  ProductDetailViewModel();
 
   @override
   void initState() {
@@ -61,7 +61,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               decoration: BoxDecoration(
                                 color: AppColors.whiteColor,
                                 borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
+                                boxShadow: const [
                                   BoxShadow(
                                     color: Colors.grey,
                                     offset:
@@ -74,7 +74,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               ),
                               width: 35,
                               height: 35,
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_back,
                                 color: AppColors.blackColor,
                                 size: 20,
@@ -86,7 +86,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           decoration: BoxDecoration(
                             color: AppColors.whiteColor,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.grey,
                                 offset: Offset(0, 2), // Offset of the shadow
@@ -98,7 +98,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           ),
                           width: 35,
                           height: 35,
-                          child: Icon(
+                          child: const Icon(
                             Icons.more_vert,
                             color: AppColors.blackColor,
                             size: 20,
@@ -108,11 +108,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                   ),
                 ),
-                body: Center(
+                body: const Center(
                     child: CircularProgressIndicator(
-                  color: AppColors.lightBlueColor,
-                  strokeWidth: 2,
-                )),
+                      color: AppColors.lightBlueColor,
+                      strokeWidth: 2,
+                    )),
               );
             case Status.ERROR:
               return Scaffold(
@@ -131,32 +131,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         children: [
                           InkWell(
                             onTap: () {
-                              print('We are here');
                               Navigator.of(context).pop(true);
                             },
-                            child: AbsorbPointer(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.whiteColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      offset:
-                                      Offset(0, 2), // Offset of the shadow
-                                      blurRadius: 2, // Spread of the shadow
-                                      spreadRadius:
-                                      0, // Amount of spreading, negative values can be used to shrink the shadow
-                                    ),
-                                  ],
-                                ),
-                                width: 35,
-                                height: 35,
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  color: AppColors.blackColor,
-                                  size: 20,
-                                ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: AppColors.whiteColor,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    offset:
+                                    Offset(0, 2), // Offset of the shadow
+                                    blurRadius: 2, // Spread of the shadow
+                                    spreadRadius:
+                                    0, // Amount of spreading, negative values can be used to shrink the shadow
+                                  ),
+                                ],
+                              ),
+                              width: 35,
+                              height: 35,
+                              child: const Icon(
+                                Icons.arrow_back,
+                                color: AppColors.blackColor,
+                                size: 20,
                               ),
                             ),
                           ),
@@ -164,7 +161,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             decoration: BoxDecoration(
                               color: AppColors.whiteColor,
                               borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Colors.grey,
                                   offset: Offset(0, 2), // Offset of the shadow
@@ -176,7 +173,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             ),
                             width: 35,
                             height: 35,
-                            child: Icon(
+                            child: const Icon(
                               Icons.more_vert,
                               color: AppColors.blackColor,
                               size: 20,
@@ -199,11 +196,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       child: Padding(
                         padding: const EdgeInsets.only(
                             left: 15, right: 15, top: 8, bottom: 8),
-                        child: Text(
-                          value.productDetail.data!.price.toString() +
-                              ' ' +
-                              ' AED',
-                          style: TextStyle(
+                        child: Text(value.productDetail.data!.price.toString() + ' ' + ' AED',
+                          style: const TextStyle(
                               color: AppColors.darkBlueColor,
                               fontSize: TextStylesData.titleFontSize,
                               fontWeight: FontWeight.bold),
@@ -211,24 +205,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       ),
                     ),
                     Container(
-                      color: Colors
-                          .transparent, //could change this to Color(0xFF737373),
-                      //so you don't have to change MaterialApp canvasColor
+                      color: Colors.transparent,
                       child: Container(
-                          decoration: new BoxDecoration(
+                          decoration: const  BoxDecoration(
                               color: AppColors.lightGreyColor,
-                              borderRadius: new BorderRadius.only(
-                                  topLeft: const Radius.circular(30.0),
-                                  topRight: const Radius.circular(30.0))),
+                              borderRadius:  BorderRadius.only(
+                                  topLeft:  Radius.circular(30.0),
+                                  topRight:  Radius.circular(30.0))),
                           child: Column(
                             children: [
                               IconButton(
                                   onPressed: () {
-                                    productDetailViewModel.expandSheet
-                                        ? productDetailViewModel
-                                            .setExpandSheet(false)
+                                    productDetailViewModel.expandSheet ? productDetailViewModel.setExpandSheet(false)
                                         : productDetailViewModel
-                                            .setExpandSheet(true);
+                                        .setExpandSheet(true);
                                   },
                                   icon: Icon(
                                     productDetailViewModel.expandSheet
@@ -244,28 +234,28 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       width: size.width,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceBetween,
                                         children: [
                                           Container(
                                             decoration: BoxDecoration(
                                               color: AppColors.whiteColor,
                                               borderRadius:
-                                                  BorderRadius.circular(20),
-                                              boxShadow: [
+                                              BorderRadius.circular(20),
+                                              boxShadow: const [
                                                 BoxShadow(
                                                   color: Colors.grey,
                                                   offset: Offset(0,
                                                       2), // Offset of the shadow
                                                   blurRadius:
-                                                      2, // Spread of the shadow
+                                                  2, // Spread of the shadow
                                                   spreadRadius:
-                                                      0, // Amount of spreading, negative values can be used to shrink the shadow
+                                                  0, // Amount of spreading, negative values can be used to shrink the shadow
                                                 ),
                                               ],
                                             ),
                                             width: 50,
                                             height: 50,
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.ios_share_outlined,
                                               color: AppColors.lightBlueColor,
                                               size: 20,
@@ -286,7 +276,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     ),
                                     Container(
                                         alignment: Alignment.centerLeft,
-                                        child: Text(
+                                        child: const Text(
                                           "Description",
                                           style: TextStyle(
                                               color: AppColors.greyColor,
@@ -301,13 +291,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         child: Text(
                                           value.productDetail.data!.description
                                               .toString(),
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: AppColors.greyColor,
                                               fontSize: TextStylesData
                                                   .extraSmallFontSize),
                                           maxLines:
-                                              //expandSheet.value ? 100 :
-                                              8,
+                                          //expandSheet.value ? 100 :
+                                          8,
                                           overflow: TextOverflow.ellipsis,
                                         )),
                                     SizedBox(
@@ -315,11 +305,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     ),
                                     Visibility(
                                       visible:
-                                          productDetailViewModel.expandSheet,
+                                      productDetailViewModel.expandSheet,
                                       child: Container(
                                         //  height: size.height*0.1,
                                         width: size.width,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: AppColors.whiteColor,
                                         ),
                                         child: Column(
@@ -328,75 +318,27 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                                 alignment: Alignment.centerLeft,
                                                 child: Padding(
                                                   padding:
-                                                      const EdgeInsets.all(5.0),
+                                                  const EdgeInsets.all(5.0),
                                                   child: Text(
                                                     "Review (${value.productDetail.data!.rating!.count.toString()})",
-                                                    style: TextStyle(
-                                                        color:
-                                                            AppColors.greyColor,
-                                                        fontSize: TextStylesData
-                                                            .extraSmallFontSize),
+                                                    style: TextStyle(color: AppColors.greyColor, fontSize: TextStylesData.extraSmallFontSize),
                                                   ),
                                                 )),
                                             Container(
                                               child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
+                                                mainAxisAlignment: MainAxisAlignment.start,
                                                 children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
+                                                  Padding( padding: const EdgeInsets.all(8.0),
                                                     child: Container(
-                                                        alignment: Alignment
-                                                            .centerLeft,
+                                                        alignment: Alignment.centerLeft,
                                                         child: Text(
-                                                          value
-                                                              .productDetail
-                                                              .data!
-                                                              .rating!
-                                                              .rate
-                                                              .toString(),
-                                                          style: TextStyle(
-                                                              color: AppColors
-                                                                  .blackColor,
-                                                              fontSize:
-                                                                  TextStylesData
-                                                                      .titleFontSize),
-                                                        )),
+                                                          value.productDetail.data!.rating!.rate.toString(),
+                                                          style: TextStyle(color: AppColors.blackColor, fontSize: TextStylesData.titleFontSize))),
                                                   ),
                                                   Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
+                                                    padding: const EdgeInsets.all(8.0),
                                                     child: Container(
-                                                      child: RatingBar.builder(
-                                                        itemSize: 20,
-                                                        initialRating: value
-                                                            .productDetail
-                                                            .data!
-                                                            .rating!
-                                                            .rate!,
-                                                        minRating: 0,
-                                                        direction:
-                                                            Axis.horizontal,
-                                                        allowHalfRating: true,
-                                                        itemCount: 5,
-                                                        unratedColor: AppColors
-                                                            .greyColor
-                                                            .withOpacity(0.4),
-                                                        //itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                                                        itemBuilder:
-                                                            (context, _) =>
-                                                                Icon(
-                                                          Icons.star,
-                                                          color: Colors.amber,
-                                                        ),
-                                                        onRatingUpdate:
-                                                            (rating) {
-                                                          print(rating);
-                                                        },
-                                                      ),
+                                                      child: RatingItem(rate: value.productDetail.data!.rating!.rate!,),
                                                     ),
                                                   ),
                                                 ],
@@ -434,32 +376,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       children: [
                         InkWell(
                           onTap: () {
-                            print('We are here');
                             Navigator.of(context).pop(true);
                           },
-                          child: AbsorbPointer(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: AppColors.whiteColor,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    offset:
-                                        Offset(0, 2), // Offset of the shadow
-                                    blurRadius: 2, // Spread of the shadow
-                                    spreadRadius:
-                                        0, // Amount of spreading, negative values can be used to shrink the shadow
-                                  ),
-                                ],
-                              ),
-                              width: 35,
-                              height: 35,
-                              child: Icon(
-                                Icons.arrow_back,
-                                color: AppColors.blackColor,
-                                size: 20,
-                              ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: AppColors.whiteColor,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset:
+                                  Offset(0, 2), // Offset of the shadow
+                                  blurRadius: 2, // Spread of the shadow
+                                  spreadRadius:
+                                  0, // Amount of spreading, negative values can be used to shrink the shadow
+                                ),
+                              ],
+                            ),
+                            width: 35,
+                            height: 35,
+                            child: Icon(
+                              Icons.arrow_back,
+                              color: AppColors.blackColor,
+                              size: 20,
                             ),
                           ),
                         ),
@@ -467,19 +406,19 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           decoration: BoxDecoration(
                             color: AppColors.whiteColor,
                             borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.grey,
                                 offset: Offset(0, 2), // Offset of the shadow
                                 blurRadius: 2, // Spread of the shadow
                                 spreadRadius:
-                                    0, // Amount of spreading, negative values can be used to shrink the shadow
+                                0, // Amount of spreading, negative values can be used to shrink the shadow
                               ),
                             ],
                           ),
                           width: 35,
                           height: 35,
-                          child: Icon(
+                          child: const Icon(
                             Icons.more_vert,
                             color: AppColors.blackColor,
                             size: 20,

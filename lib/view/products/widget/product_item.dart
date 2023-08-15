@@ -2,11 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:stc_health_suits_assessment_test_nouman/model/product_model.dart';
-import 'package:stc_health_suits_assessment_test_nouman/res/app_text.dart';
+import 'package:stc_health_suits_assessment_test_nouman/res/components/app_text.dart';
 import 'package:stc_health_suits_assessment_test_nouman/res/colors.dart';
+import 'package:stc_health_suits_assessment_test_nouman/res/components/rating.dart';
 import 'package:stc_health_suits_assessment_test_nouman/utils/routes/routes_name.dart';
-import 'package:stc_health_suits_assessment_test_nouman/view/detail/product_detail_screen.dart';
-import 'package:stc_health_suits_assessment_test_nouman/view_model/product_view_model.dart';
 
 class ProductItem extends StatefulWidget {
   final ProductModel product;
@@ -80,25 +79,7 @@ class _ProductItemState extends State<ProductItem> {
                                 fontSize: TextStylesData.mediumFontSize,
                                 fontWeight: FontWeight.bold),
                           ),
-                          Container(
-                            child: RatingBar.builder(
-                              itemSize: 20,
-                              initialRating: widget.product.rating!.rate!,
-                              minRating: 0,
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,
-                              itemCount: 5,
-                              unratedColor: AppColors.greyColor,
-                              //itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
-                              itemBuilder: (context, _) => Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                              ),
-                              onRatingUpdate: (rating) {
-                                print(rating);
-                              },
-                            ),
-                          ),
+                          RatingItem(rate: widget.product.rating!.rate,),
                         ],
                       ),
                     ),
